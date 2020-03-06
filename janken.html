@@ -1,23 +1,58 @@
 <!DOCTYPE html>
 <script>
- 
-
- const options = [ 'Rock', 'paper', 'scissors'];
-
-function Player(){
-let PlayerAnswer = prompt ("Let's play Janken! Choose rock, paper or scissors");
-let PlayerAnswer_lowercase = PlayerAnswer.toLowerCase();
-}
 
 
+
+
+
+
+
+function Janken(){
+
+const options = [ 'rock', 'paper', 'scissors'];
+let PlayerInput = prompt ("Let's play Janken! Choose rock, paper or scissors");
 function NPC(){
 let RandNum3 = Math.floor(Math.random() * 3);
 let choice = options[RandNum3];
-return choice;
+return choice;}
+let PlayerAnswer = PlayerInput.toLowerCase();
+let computerAnswer = NPC();
+
+
+
+function oneRound(player_choice, computer_choice){
+
+if (player_choice == computer_choice ) {
+return("A tie !");    
 }
+else if(player_choice == "rock" && computer_choice == "paper"){
+return("You lose!");
+}
+else if(player_choice == "rock" && computer_choice == "scissors" ){
+return("You win!");
+}
+else if(player_choice == "paper" && computer_choice == "rock" ){
+return("You win!");    
+}
+else if(player_choice == "paper" && computer_choice == "scissors" ){
+return("You lose!");
+}
+else if(player_choice == "scissors" && computer_choice == "paper" ){
+return("You win!");    
+}
+else if(player_choice == "scissors" && computer_choice == "rock" ){
+return ("You lose!");
+}
+else {
+return("oops, that wasn't rock, paper or scissors");
+} 
+}
+let outcome = oneRound(PlayerAnswer,computerAnswer);
+alert("your opponent chose " + computerAnswer);
+return outcome;
 
 
-
-
+}
+alert(Janken());
 
 </script>
