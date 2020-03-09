@@ -8,20 +8,26 @@
 
 
 function Janken(){
-
+alert("Let's play Janken!")
+let turns = 1;
 const options = [ 'rock', 'paper', 'scissors'];
-let PlayerInput = prompt ("Let's play Janken! Choose rock, paper or scissors");
+let playerScore = 0
+let computerScore = 0
+
+while (turns < 6) {
+
+let PlayerInput = prompt ("Choose rock, paper or scissors");
 function NPC(){
 let RandNum3 = Math.floor(Math.random() * 3);
 let choice = options[RandNum3];
 return choice;}
 let PlayerAnswer = PlayerInput.toLowerCase();
 let computerAnswer = NPC();
+alert("You chose " + PlayerInput+ " your oppenent chose " + computerAnswer)
 
 
 
 function oneRound(player_choice, computer_choice){
-
 if (player_choice == computer_choice ) {
 return("A tie !");    
 }
@@ -44,15 +50,25 @@ else if(player_choice == "scissors" && computer_choice == "rock" ){
 return ("You lose!");
 }
 else {
-return("oops, that wasn't rock, paper or scissors");
+return("oops, that wasn't rock, paper or scissors. Your oppenent wins this one.");
 } 
 }
 let outcome = oneRound(PlayerAnswer,computerAnswer);
-alert("your opponent chose " + computerAnswer);
-return outcome;
+alert(outcome);
+if (outcome == "You win!"){ playerScore ++ }
+else if( outcome == "A tie !")
+{ alert("no one gets points this round"); }
 
+else {computerScore ++}
+turns ++;
+alert("current score is Player: " + playerScore + " to " + computerScore);
 
-}
-alert(Janken());
+}      // outer bracket for while loop
+if (playerScore > computerScore) { alert("You Beat the computer!");}
+else if ( computerScore > playerScore) { alert("Sorry, the computer won this game.");}
+else { alert("Tied game.");} 
+        
+}      // outer bracket for Janken()
+Janken();
 
 </script>
